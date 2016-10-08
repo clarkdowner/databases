@@ -20,8 +20,8 @@
     "body-parser": "^1.9.2",
     "express": "^4.10.1",
     "morgan": "^1.4.1",
-    "mysql": "^2.4.2",
-    "request": "^2.69.0",
+    "mysql": "^2.11.1",
+    "request": "^2.75.0",
     "sequelize": "^3.21.0"
   },
   "devDependencies": {
