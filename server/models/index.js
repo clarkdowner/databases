@@ -110,7 +110,6 @@ module.exports = {
             cb();
           });
         });
-      // add a new user to the db.
     }
   },
 
@@ -125,12 +124,17 @@ module.exports = {
       });
     },
     post: function (roomname, cb) {
-      console.log('inside rooms put method', roomname);
-      // add a new room to the db.
-      mySQL.query('insert into rooms (roomname) values (?)', [roomname], (err) => {
-        if (err) { throw err; }
-        cb();
-      });
+      queryForUserIdAsync(roomname)
+        .then(() => {
+          console.log('room already exists');
+          cb();
+        })
+        .catch(() => {
+          mySQL.query('insert into rooms (roomname) values (?)', [roomname], (err) => {
+            if (err) { throw err; }
+            cb();
+          });
+        });
     }
   }
 };

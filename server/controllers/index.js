@@ -11,14 +11,12 @@ var headers = {
 module.exports = {
   messages: {
     get: function (req, res) {
-      console.log('=====================================14', req.body);
       models.messages.get((messages) => {
         res.writeHead(200, headers);
         res.end(JSON.stringify(messages));
       });
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      console.log('=====================================21', req.body);
       models.messages.post(req.body, () => {
         res.writeHead(302, headers);
         res.end();
@@ -30,7 +28,6 @@ module.exports = {
     // Ditto as above
     get: function (req, res) {},
     post: function (req, res) {
-      console.log('=============================33', req.body);
       models.users.post(req.body.username, () => {
         res.writeHead(302, headers);
         res.end();
