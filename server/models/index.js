@@ -64,7 +64,8 @@ module.exports = {
   messages: {
     get: function (cb) {
       // return all msgs from the db.
-      mySQL.query('select message from messages', (err, result) => {
+      mySQL.query('select messages.message, users.username, rooms.roomname from messages ' + 
+        'inner join rooms on (rooms.id = messages.room_id) inner join users on (users.id = messages.user_id);', (err, result) => {
         if (err) { throw err; }
 
         cb(result);
